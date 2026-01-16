@@ -45,6 +45,11 @@ export default function FormCollection() {
       <div className="form-wrapper">
         <img className="shine-left" src="/common/shine.png" alt="" />
         <img className="shine-right" src="/common/shine.png" alt="" />
+        <img
+          className="form-title-image"
+          src="/formcollection/details_to_fill.png"
+          alt="Details to Fill"
+        />
         <div className="form-container">
           <div className="form-group">
             <label className="form-label">Write Your Name:</label>
