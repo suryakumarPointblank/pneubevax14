@@ -1,8 +1,9 @@
 import BackgroundSection from "@/components/BackgroundSection";
 
 export default function FormCollection() {
-  const row1 = [1, 2, 3, 4, 5];
-  const row2 = [6, 7, 8, 9, 10];
+  const row1 = [1, 2, 3];
+  const row2 = [4, 5, 6, 7];
+  const row3 = [8, 9, 10];
   const jerseySizes = ["Xs", "S", "M", "L", "Xl", "Xxl", "Xxxl"];
 
   return (
@@ -21,6 +22,16 @@ export default function FormCollection() {
         </div>
         <div className="teams-row">
           {row2.map((num) => (
+            <img
+              key={num}
+              className="team-image"
+              src={`/formcollection/teams/team${num}.png`}
+              alt={`Team ${num}`}
+            />
+          ))}
+        </div>
+        <div className="teams-row">
+          {row3.map((num) => (
             <img
               key={num}
               className="team-image"
