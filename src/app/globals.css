@@ -321,3 +321,31 @@ body {
   pointer-events: none;
   z-index: -1;
 }
+
+/* Homepage Button */
+.select-button {
+  position: absolute;
+  bottom: 11.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  animation: shimmer 3s infinite;
+}
+
+.select-button:hover {
+  transform: translateX(-50%) scale(1.05);
+  filter: drop-shadow(0 6px 15px rgba(255, 215, 0, 0.4));
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 6px 20px rgba(255, 215, 0, 0.6)) brightness(1.3);
+  }
+}
