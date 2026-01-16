@@ -31,77 +31,81 @@ export default function FormCollection() {
         </div>
       </div>
 
-      <div className="form-container">
-        <div className="form-group">
-          <label className="form-label">Write Your Name:</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">HQ</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Employee Id</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Sm Name</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Zbrn Name</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Dr's Name As Per Besmartr</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Dr's Email Id</label>
-          <input type="email" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Dr's Mobile Number</label>
-          <input type="tel" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Dr's Favourite Team For Jersey</label>
-          <input type="text" className="form-input" />
-        </div>
-
-        <div className="form-group">
-          <label className="form-label">Jersey Size</label>
-          <div className="radio-group">
-            {jerseySizes.map((size) => (
-              <label key={size} className="radio-label">
-                <input
-                  type="radio"
-                  name="jerseySize"
-                  value={size}
-                  className="radio-input"
-                />
-                {size}
-              </label>
-            ))}
+      <div className="form-wrapper">
+        <img className="shine-left" src="/common/shine.png" alt="" />
+        <img className="shine-right" src="/common/shine.png" alt="" />
+        <div className="form-container">
+          <div className="form-group">
+            <label className="form-label">Write Your Name:</label>
+            <input type="text" className="form-input" />
           </div>
-        </div>
 
-        <div className="form-group">
-          <label className="form-label">Name To Print On Jersey</label>
-          <input type="text" className="form-input" />
-        </div>
+          <div className="form-group">
+            <label className="form-label">HQ</label>
+            <input type="text" className="form-input" />
+          </div>
 
-        <div className="form-group">
-          <label className="form-label">Number To Print On Jersey</label>
-          <input type="text" className="form-input" />
+          <div className="form-group">
+            <label className="form-label">Employee Id</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Sm Name</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Zbrn Name</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Dr's Name As Per Besmartr</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Dr's Email Id</label>
+            <input type="email" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Dr's Mobile Number</label>
+            <input type="tel" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Dr's Favourite Team For Jersey</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Jersey Size</label>
+            <div className="radio-group">
+              {jerseySizes.map((size) => (
+                <label key={size} className="radio-label">
+                  <input
+                    type="radio"
+                    name="jerseySize"
+                    value={size}
+                    className="radio-input"
+                  />
+                  {size}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Name To Print On Jersey</label>
+            <input type="text" className="form-input" />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label">Number To Print On Jersey</label>
+            <input type="text" className="form-input" />
+          </div>
         </div>
       </div>
     </BackgroundSection>
