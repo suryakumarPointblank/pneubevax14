@@ -1,17 +1,21 @@
 import BackgroundSection from "@/components/BackgroundSection";
 
 export default function FormCollection() {
-  const row1 = [1, 2, 3];
-  const row2 = [4, 5, 6, 7];
-  const row3 = [8, 9, 10];
+  const mobileRow1 = [1, 2, 3];
+  const mobileRow2 = [4, 5, 6, 7];
+  const mobileRow3 = [8, 9, 10];
+  const desktopRow1 = [1, 2, 3, 4, 5];
+  const desktopRow2 = [6, 7, 8, 9, 10];
   const jerseySizes = ["Xs", "S", "M", "L", "Xl", "Xxl", "Xxxl"];
 
   return (
     <BackgroundSection imageSrc="/formcollection/bg_formcollection.png" fixed>
       <img className="ipl-logo" src="/common/ipl_logo.png" alt="IPL Logo" />
-      <div className="teams-grid">
+
+      {/* Mobile: 3-4-3 layout */}
+      <div className="teams-grid teams-mobile">
         <div className="teams-row">
-          {row1.map((num) => (
+          {mobileRow1.map((num) => (
             <img
               key={num}
               className="team-image"
@@ -21,7 +25,7 @@ export default function FormCollection() {
           ))}
         </div>
         <div className="teams-row">
-          {row2.map((num) => (
+          {mobileRow2.map((num) => (
             <img
               key={num}
               className="team-image"
@@ -31,7 +35,31 @@ export default function FormCollection() {
           ))}
         </div>
         <div className="teams-row">
-          {row3.map((num) => (
+          {mobileRow3.map((num) => (
+            <img
+              key={num}
+              className="team-image"
+              src={`/formcollection/teams/team${num}.png`}
+              alt={`Team ${num}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: 5-5 layout */}
+      <div className="teams-grid teams-desktop">
+        <div className="teams-row">
+          {desktopRow1.map((num) => (
+            <img
+              key={num}
+              className="team-image"
+              src={`/formcollection/teams/team${num}.png`}
+              alt={`Team ${num}`}
+            />
+          ))}
+        </div>
+        <div className="teams-row">
+          {desktopRow2.map((num) => (
             <img
               key={num}
               className="team-image"

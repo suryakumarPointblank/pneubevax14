@@ -63,6 +63,84 @@ body {
   object-fit: cover;
 }
 
+/* Mobile: show 3-4-3, hide 5-5 */
+.teams-mobile {
+  display: flex;
+}
+.teams-desktop {
+  display: none;
+}
+
+/* Form Wrapper with Shines */
+.form-wrapper {
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+/* Desktop: Make background scrollable */
+@media (min-width: 768px) {
+  .background-container-fixed {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .background-image-fixed {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .background-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Teams: show desktop layout, hide mobile */
+  .teams-mobile {
+    display: none;
+  }
+  .teams-desktop {
+    display: flex;
+  }
+
+  .team-image {
+    width: 15%;
+    max-width: 100px;
+  }
+
+  /* Form: 70% width on desktop */
+  .form-wrapper {
+    max-width: none;
+    width: 60%;
+  }
+
+  .form-container {
+    max-width: 100%;
+  }
+
+  /* Increase font sizes for desktop */
+  .form-label {
+    font-size: 20px;
+  }
+
+  .form-input {
+    font-size: 18px;
+  }
+
+  .radio-label {
+    font-size: 18px;
+  }
+}
+
 /* FormCollection Page */
 .ipl-logo {
   position: absolute;
@@ -74,7 +152,6 @@ body {
 }
 
 .teams-grid {
-  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
@@ -211,15 +288,6 @@ body {
 .radio-input:checked {
   background: white;
   box-shadow: inset 0 0 0 3px rgba(59, 65, 94, 1);
-}
-
-/* Form Wrapper with Shines */
-.form-wrapper {
-  position: relative;
-  max-width: 500px;
-  width: 90%;
-  margin: 0 auto;
-  overflow: visible;
 }
 
 .shine-left {
