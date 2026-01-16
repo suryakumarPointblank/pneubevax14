@@ -3,7 +3,8 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <BackgroundSection imageSrc="/homepage/bg_homepage.png">
+    <div className="homepage-page">
+      <BackgroundSection imageSrc="/homepage/bg_homepage.png">
       {/* Page 1 - Homepage content */}
       <img
         className="sub-image sub1"
@@ -23,5 +24,6 @@ export default function Home() {
         />
       </Link>
     </BackgroundSection>
+    </div>
   );
 }

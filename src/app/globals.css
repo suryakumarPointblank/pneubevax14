@@ -5,6 +5,7 @@
   --foreground: #171717;
 }
 
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -81,7 +82,7 @@ body {
 }
 
 /* Desktop: Make background scrollable */
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   /* Swap formcollection background for desktop */
   .formcollection-page .background-image-fixed {
     content: url('/formcollection/bg_formcollection_pc.png');
@@ -148,6 +149,60 @@ body {
   /* Increase spacing between form fields */
   .form-group {
     margin-bottom: 36px;
+  }
+
+  /* Homepage desktop background */
+  .homepage-page .background-image {
+    content: url('/homepage/bg_homepage_pc.png');
+  }
+
+  /* Homepage button position for desktop */
+  .homepage-page .select-button {
+    bottom: 7%;
+    left: 66%;
+    transform: translateX(-50%);
+    width: 20%;
+  }
+
+  /* Sub images for desktop */
+  .homepage-page .sub-image {
+    width: 60%;
+  }
+
+  .homepage-page .sub1 {
+    animation: slideInTopLeftDesktop 5s ease-out 2s forwards;
+  }
+
+  .homepage-page .sub2 {
+    animation: slideInBottomRightDesktop 5s ease-out 2s forwards;
+  }
+
+  @keyframes slideInTopLeftDesktop {
+    0% {
+      opacity: 0;
+      top: 25%;
+      left: 100%;
+    }
+    100% {
+      opacity: 1;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes slideInBottomRightDesktop {
+    0% {
+      opacity: 0;
+      top: 30%;
+      left: -50%;
+    }
+    100% {
+      opacity: 1;
+      top: 33.5%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -334,6 +389,7 @@ body {
   transition: transform 0.2s ease;
   filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
   animation: shimmer 3s infinite;
+  z-index: 10;
 }
 
 .select-button:hover {
