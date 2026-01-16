@@ -82,6 +82,11 @@ body {
 
 /* Desktop: Make background scrollable */
 @media (min-width: 768px) {
+  /* Swap formcollection background for desktop */
+  .formcollection-page .background-image-fixed {
+    content: url('/formcollection/bg_formcollection_pc.png');
+  }
+
   .background-container-fixed {
     position: relative;
     width: 100%;
@@ -138,6 +143,11 @@ body {
 
   .radio-label {
     font-size: 18px;
+  }
+
+  /* Increase spacing between form fields */
+  .form-group {
+    margin-bottom: 36px;
   }
 }
 

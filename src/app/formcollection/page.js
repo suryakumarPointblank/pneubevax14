@@ -9,8 +9,9 @@ export default function FormCollection() {
   const jerseySizes = ["Xs", "S", "M", "L", "Xl", "Xxl", "Xxxl"];
 
   return (
-    <BackgroundSection imageSrc="/formcollection/bg_formcollection.png" fixed>
-      <img className="ipl-logo" src="/common/ipl_logo.png" alt="IPL Logo" />
+    <div className="formcollection-page">
+      <BackgroundSection imageSrc="/formcollection/bg_formcollection.png" fixed>
+        <img className="ipl-logo" src="/common/ipl_logo.png" alt="IPL Logo" />
 
       {/* Mobile: 3-4-3 layout */}
       <div className="teams-grid teams-mobile">
@@ -153,5 +154,6 @@ export default function FormCollection() {
         </div>
       </div>
     </BackgroundSection>
+    </div>
   );
 }

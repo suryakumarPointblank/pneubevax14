@@ -2,8 +2,8 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
   if (fixed) {
     return (
       <div className="background-container-fixed">
-        <img 
-          className="background-image-fixed" 
+        <img
+          className="background-image-fixed"
           src={imageSrc}
           alt="Background"
         />
@@ -16,8 +16,8 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
 
   return (
     <div className="background-container">
-      <img 
-        className="background-image" 
+      <img
+        className="background-image"
         src={imageSrc}
         alt="Background"
       />
