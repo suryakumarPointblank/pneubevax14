@@ -1,4 +1,26 @@
-export default function BackgroundSection({ children, imageSrc = '/homepage/bg_homepage.png', fixed = false }) {
+'use client';
+
+import { useState, useEffect } from 'react';
+
+export default function BackgroundSection({ children, imageSrc = '/homepage/bg_homepage.png', fixed = false, onImageLoad }) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setIsImageLoaded(true);
+    if (onImageLoad) {
+      onImageLoad();
+    }
+  };
+
+  // Also check if image is already cached
+  useEffect(() => {
+    const img = new Image();
+    img.src = imageSrc;
+    if (img.complete) {
+      handleImageLoad();
+    }
+  }, [imageSrc]);
+
   if (fixed) {
     return (
       <div className="background-container-fixed">
@@ -6,6 +28,7 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
           className="background-image-fixed"
           src={imageSrc}
           alt="Background"
+          onLoad={handleImageLoad}
         />
         <div className="background-content">
           {children}
@@ -20,6 +43,7 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
         className="background-image"
         src={imageSrc}
         alt="Background"
+        onLoad={handleImageLoad}
       />
       <div className="background-content">
         {children}
