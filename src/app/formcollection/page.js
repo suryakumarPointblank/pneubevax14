@@ -4,16 +4,34 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useState, useEffect } from "react";
 import BackgroundSection from "@/components/BackgroundSection";
 
+// Team mapping - matches team images (team1.png = CSK, etc.)
+const TEAMS = [
+  { id: 1, code: "CSK", name: "Chennai Super Kings" },
+  { id: 2, code: "GT", name: "Gujarat Titans" },
+  { id: 3, code: "SRH", name: "Sunrisers Hyderabad" },
+  { id: 4, code: "MI", name: "Mumbai Indians" },
+  { id: 5, code: "KKR", name: "Kolkata Knight Riders" },
+  { id: 6, code: "RR", name: "Rajasthan Royals" },
+  { id: 7, code: "RCB", name: "Royal Challengers Bangalore" },
+  { id: 8, code: "PBKS", name: "Punjab Kings" },
+  { id: 9, code: "DC", name: "Delhi Capitals" },
+  { id: 10, code: "LSG", name: "Lucknow Super Giants" },
+];
+
 function FormCollectionContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const selectedTeam = searchParams.get("team") || "";
+  const selectedTeamId = searchParams.get("team") || "";
   const jerseySizes = ["Xs", "S", "M", "L", "Xl", "Xxl", "Xxxl"];
 
   const [isReady, setIsReady] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
+  const [errors, setErrors] = useState({});
+
+  // Get selected team from URL param
+  const selectedTeam = TEAMS.find((t) => t.id === parseInt(selectedTeamId));
 
   const smNames = [
     "S.Balaji",
@@ -60,12 +78,43 @@ function FormCollectionContent() {
     setIsReady(true);
   };
 
+  // Validation functions
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateMobile = (mobile) => {
+    // Indian mobile: 10 digits, optionally starting with +91
+    const mobileRegex = /^(\+91)?[6-9]\d{9}$/;
+    return mobileRegex.test(mobile.replace(/\s/g, ""));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors({});
+
+    const formData = new FormData(e.target);
+    const drEmail = formData.get("drEmail");
+    const drMobile = formData.get("drMobile");
+
+    // Validate
+    const newErrors = {};
+    if (!validateEmail(drEmail)) {
+      newErrors.drEmail = "Please enter a valid email address";
+    }
+    if (!validateMobile(drMobile)) {
+      newErrors.drMobile = "Please enter a valid 10-digit mobile number";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitMessage("");
 
-    const formData = new FormData(e.target);
     const data = {
       name: formData.get("name"),
       hq: formData.get("hq"),
@@ -73,12 +122,10 @@ function FormCollectionContent() {
       smName: formData.get("smName"),
       zbmName: formData.get("zbmName"),
       drName: formData.get("drName"),
-      drEmail: formData.get("drEmail"),
-      drMobile: formData.get("drMobile"),
-      favouriteTeam: selectedTeam
-        ? `Team ${selectedTeam}`
-        : formData.get("favouriteTeam"),
-      selectedTeamNumber: selectedTeam || null,
+      drEmail: drEmail,
+      drMobile: drMobile,
+      favouriteTeam: formData.get("favouriteTeam"),
+      selectedTeamCode: selectedTeam?.code || formData.get("favouriteTeam"),
       jerseySize: formData.get("jerseySize"),
       nameToPrint: formData.get("nameToPrint"),
       numberToPrint: formData.get("numberToPrint"),
@@ -236,9 +283,12 @@ function FormCollectionContent() {
                     <input
                       type="email"
                       name="drEmail"
-                      className="form-input"
+                      className={`form-input ${errors.drEmail ? "input-error" : ""}`}
                       required
                     />
+                    {errors.drEmail && (
+                      <span className="error-text">{errors.drEmail}</span>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -246,23 +296,41 @@ function FormCollectionContent() {
                     <input
                       type="tel"
                       name="drMobile"
-                      className="form-input"
+                      className={`form-input ${errors.drMobile ? "input-error" : ""}`}
+                      placeholder="10-digit mobile number"
                       required
                     />
+                    {errors.drMobile && (
+                      <span className="error-text">{errors.drMobile}</span>
+                    )}
                   </div>
 
                   <div className="form-group">
                     <label className="form-label">
                       Dr's Favourite Team For Jersey
                     </label>
-                    <input
-                      type="text"
-                      name="favouriteTeam"
-                      className="form-input"
-                      defaultValue={selectedTeam ? `Team ${selectedTeam}` : ""}
-                      readOnly={!!selectedTeam}
-                      required
-                    />
+                    {selectedTeam ? (
+                      <input
+                        type="text"
+                        name="favouriteTeam"
+                        className="form-input"
+                        value={`${selectedTeam.code} - ${selectedTeam.name}`}
+                        readOnly
+                      />
+                    ) : (
+                      <select
+                        name="favouriteTeam"
+                        className="form-input form-select"
+                        required
+                      >
+                        <option value="">Select Team</option>
+                        {TEAMS.map((team) => (
+                          <option key={team.id} value={team.code}>
+                            {team.code} - {team.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
                   </div>
 
                   <div className="form-group">

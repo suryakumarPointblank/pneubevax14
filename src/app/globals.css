@@ -363,6 +363,18 @@ body {
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* Input Error States */
+.input-error {
+  border-bottom-color: #ef4444 !important;
+}
+
+.error-text {
+  display: block;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 /* Dropdown Select Styles */
 .form-select {
   appearance: none;
