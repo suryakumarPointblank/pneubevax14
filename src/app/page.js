@@ -26,6 +26,12 @@ export default function Home() {
 
   return (
     <>
+      {!showContent && (
+        <div className="page-loader">
+          <div className="loader-spinner"></div>
+          <p className="loader-text">Loading...</p>
+        </div>
+      )}
       {/* Main content */}
       <div className={`homepage-page ${showContent ? "images-ready" : ""}`}>
         <BackgroundSection

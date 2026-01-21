@@ -30,7 +30,14 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
           alt="Background"
           onLoad={handleImageLoad}
         />
-        <div className="background-content">
+        <div 
+          className="background-content"
+          style={{
+            opacity: isImageLoaded ? 1 : 0,
+            transition: 'opacity 0.5s ease-in-out',
+            visibility: isImageLoaded ? 'visible' : 'hidden'
+          }}
+        >
           {children}
         </div>
       </div>
@@ -45,7 +52,14 @@ export default function BackgroundSection({ children, imageSrc = '/homepage/bg_h
         alt="Background"
         onLoad={handleImageLoad}
       />
-      <div className="background-content">
+      <div 
+        className="background-content"
+        style={{
+          opacity: isImageLoaded ? 1 : 0,
+          transition: 'opacity 0.5s ease-in-out',
+          visibility: isImageLoaded ? 'visible' : 'hidden'
+        }}
+      >
         {children}
       </div>
     </div>

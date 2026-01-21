@@ -594,6 +594,11 @@ body {
   position: absolute;
   width: 95%;
   height: auto;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.homepage-page.images-ready .sub-image {
   opacity: 1;
 }
 
