@@ -214,7 +214,7 @@ function FormCollectionContent() {
                 />
                 <form className="form-container" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="form-label">Write Your ABE Name:</label>
+                    <label className="form-label">ABE Name:</label>
                     <input
                       type="text"
                       name="name"
@@ -408,12 +408,13 @@ function FormCollectionContent() {
                   >
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
+
+                  <p className="form-note">
+                    If the team whose jersey you're collecting finishes as the
+                    winner or <br/>runner-up, you'll receive special gift.
+                    <span className="form-note-highlight">Stay tuned!</span>
+                  </p>
                 </form>
-                <p className="form-note form-note-highlight">
-                  If the team whose jersey you're collecting finishes as the
-                  winner or runner-up, you'll receive special gifts.
-                  <span className="form-note-highlight">Stay tuned!</span>
-                </p>
               </>
             )}
           </div>
