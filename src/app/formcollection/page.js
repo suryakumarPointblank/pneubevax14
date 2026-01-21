@@ -132,6 +132,7 @@ function FormCollectionContent() {
       drName: formData.get("drName"),
       drEmail: drEmail,
       drMobile: drMobile,
+      drCategory: formData.get("drCategory"),
       favouriteTeam: formData.get("favouriteTeam"),
       selectedTeamCode: selectedTeam?.code || formData.get("favouriteTeam"),
       jerseySize: formData.get("jerseySize"),
@@ -213,7 +214,7 @@ function FormCollectionContent() {
                 />
                 <form className="form-container" onSubmit={handleSubmit}>
                   <div className="form-group">
-                    <label className="form-label">Write Your Name:</label>
+                    <label className="form-label">Write Your ABE Name:</label>
                     <input
                       type="text"
                       name="name"
@@ -243,7 +244,7 @@ function FormCollectionContent() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Sm Name</label>
+                    <label className="form-label">SM Name</label>
                     <select
                       name="smName"
                       className="form-input form-select"
@@ -259,7 +260,7 @@ function FormCollectionContent() {
                   </div>
 
                   <div className="form-group">
-                    <label className="form-label">Zbrn Name</label>
+                    <label className="form-label">ZBM Name</label>
                     <select
                       name="zbmName"
                       className="form-input form-select"
@@ -276,7 +277,7 @@ function FormCollectionContent() {
 
                   <div className="form-group">
                     <label className="form-label">
-                      Dr's Name As Per Besmartr
+                      Dr's Name As Per BESMARTR
                     </label>
                     <input
                       type="text"
@@ -311,6 +312,19 @@ function FormCollectionContent() {
                     {errors.drMobile && (
                       <span className="error-text">{errors.drMobile}</span>
                     )}
+                  </div>
+
+                  <div className="form-group">
+                    <label className="form-label">Dr's Category</label>
+                    <select
+                      name="drCategory"
+                      className="form-input form-select"
+                      required
+                    >
+                      <option value="">Select Category</option>
+                      <option value="User">User</option>
+                      <option value="Non-User">Non-User</option>
+                    </select>
                   </div>
 
                   <div className="form-group">
@@ -395,9 +409,10 @@ function FormCollectionContent() {
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </form>
-                <p className="form-note">
+                <p className="form-note form-note-highlight">
                   If the team whose jersey you're collecting finishes as the
-                  winner or runner-up, you'll receive special gifts. Stay tuned!
+                  winner or runner-up, you'll receive special gifts.
+                  <span className="form-note-highlight">Stay tuned!</span>
                 </p>
               </>
             )}
