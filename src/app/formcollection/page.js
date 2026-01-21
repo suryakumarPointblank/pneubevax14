@@ -22,7 +22,15 @@ function FormCollectionContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const selectedTeamId = searchParams.get("team") || "";
-  const jerseySizes = ["Xs", "S", "M", "L", "Xl", "Xxl", "Xxxl"];
+  const jerseySizes = [
+    "XS (36)",
+    "S (38)",
+    "M (40)",
+    "L (42)",
+    "XL (44)",
+    "XXL (46)",
+    "XXXL (48)",
+  ];
 
   const [isReady, setIsReady] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -387,6 +395,10 @@ function FormCollectionContent() {
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </form>
+                <p className="form-note">
+                  If the team whose jersey you're collecting finishes as the
+                  winner or runner-up, you'll receive special gifts. Stay tuned!
+                </p>
               </>
             )}
           </div>
