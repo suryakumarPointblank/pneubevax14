@@ -1,5 +1,6 @@
 import { getDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+import { appendRowToSheet } from "@/lib/google-sheets";
 
 export async function POST(request) {
   try {
@@ -20,6 +21,10 @@ export async function POST(request) {
     };
 
     const result = await collection.insertOne(submission);
+
+    // Append to Google Sheet (fire and forget-ish, but handy to await if we want to confirm log)
+    // We await it here so we get the log, but we've already saved to DB.
+    await appendRowToSheet(submission);
 
     return NextResponse.json({
       success: true,
